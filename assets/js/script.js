@@ -49,21 +49,23 @@ const showTasks = () =>{
 }
 showTasks()
 
-let id = 1;
+
 const addTasks = () =>{
     
     if(textbox.value === ''){
         alert("No ha ingresado ningun valor")
         return
     }
-        
         console.log("Se ha añadido una nueva tarea")
-        const idtask = arrayTasks.find (task => task.id === arrayTasks.length) 
-        if(idtask){
-            id = arrayTasks.length + 1
-        }
+        let lastTask = arrayTasks[arrayTasks.length - 1].id
+        let task = arrayTasks.length + 1
+                if( task ){
+                    lastTask = arrayTasks.length + 1
+                }else{
+                    
+                }
         const newTask ={
-            "id" : id,
+            "id" : lastTask,
             "task" : textbox.value,
             "status": false
         }
@@ -93,7 +95,8 @@ const deleteTasks = (arrayTasksID) =>{
 
 document.addEventListener('keydown', function(event) {
     if (event.keyCode === 13) {
-    showTasks()
+        addTasks()
+        showTasks()
     }
 });
 
