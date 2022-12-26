@@ -38,6 +38,7 @@ const showTasks = () =>{
         <td><img id="delete" onclick="deleteTasks(${task.id})" src="/assets/image/x.png" alt="eliminar" srcset=""></td>
         <td> <button onclick="modifyTasks(${task.id})"  class="btn" id="modificar">Modificar</button></td>
         </tr>`
+        
         contadorTareas ++;
         if(task.status === true){
             contadorRealizadas++
@@ -83,7 +84,7 @@ const modifyStatusTasks = (arrayTasksID) =>{
     showTasks()
 }
 
-const deleteTasks = (arrayTasksID) =>{
+const deleteTasks = (arrayTasksID) =>{  
     const confirmDelete = confirm("Estas seguro de que deseas eliminar esta tarea?");
     if(confirmDelete){
         const index = arrayTasks.findIndex(task => task.id === arrayTasksID)
@@ -101,32 +102,29 @@ document.addEventListener('keydown', function(event) {
 });
 
 
-const modifyTasks = (arrayTasksID) =>{
+let modifyTasks = (arrayTasksID) =>{
         const index = arrayTasks.findIndex(task => task.id === arrayTasksID)
+        console.log(index)
+        textbox.value = arrayTasks[index].task
+        btnModificarBlue.setAttribute("onclick","acceptModifyTasks("+arrayTasksID+")")
+        btnModificarBlue.style.display = 'block'     
+        btnAgregar.style.display = 'none'     
+
+    }
+const acceptModifyTasks = (arrayTasksID) => {
+        const index = arrayTasks.findIndex(task => task.id === arrayTasksID)
+        console.log("hola xd")
+        arrayTasks[index].task = textbox.value 
         if(textbox.value === ''){
             alert("No ha ingresado ningun valor")
             return
         }
-        const confirmModify = confirm("Estas seguro de que deseas MODIFICAR esta tarea?");
+        let confirmModify = confirm("Estas seguro de que deseas MODIFICAR esta tarea?");
+        console.log("hi")
         if(confirmModify){
         arrayTasks[index].task = textbox.value
         showTasks()
+        btnModificarBlue.style.display = 'none'
         return
-        }   
-}
-
-/* 
-
-eliminar.addEventListener("click", function(){
-    console.log("hoadsfgdsg")
-    alert("Estas seguro?")
-}
-)
-
-let eliminar = document.getElementById("delete");
-
-const addTasks = () =>{
-    let textbox = document.getElementById("textbox")
-    
-}
- */
+        }    
+    }
