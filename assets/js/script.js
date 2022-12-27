@@ -24,7 +24,7 @@ const btnModificar = document.getElementById("modificar");
 const btnModificarBlue = document.getElementById("modifyBlue");
 
 
-
+const showTasks = () =>{
     let contadorTareas= 0;
     let contadorRealizadas= 0;
     let insertar = document.getElementById("insertar")
@@ -47,7 +47,7 @@ const btnModificarBlue = document.getElementById("modifyBlue");
     insertar.innerHTML = dataTareas;
     total.innerHTML = contadorTareas;
     realizadas.innerHTML = contadorRealizadas;
-
+}
 showTasks()
 
 
@@ -124,12 +124,11 @@ const acceptModifyTasks = (arrayTasksID) => {
             return
         }
         let confirmModify = confirm("Estas seguro de que deseas MODIFICAR esta tarea?");
-        console.log("Estado: "+confirmModify)
         if(confirmModify){
         arrayTasks[index].task = textbox.value
         showTasks()
         btnModificarBlue.style.display = 'none'
-        btnAgregar.style.display = 'block'    
+        btnAgregar.style.display = 'none'    
         return
         }    
     }
