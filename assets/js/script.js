@@ -94,15 +94,19 @@ const deleteTasks = (arrayTasksID) =>{
     showTasks()
 }
 
-document.addEventListener('keydown', function(event) {
+document.addEventListener('keydown',  bntEnter = (event) => {
     if (event.keyCode === 13) {
-        addTasks()
-        showTasks()
+        /* if(btnAgregar.style.display === 'none'){
+            modifyTasks()
+        }else{ */
+            addTasks()
+            showTasks()
+       /*  } */
     }
 });
 
 
-let modifyTasks = (arrayTasksID) =>{
+const modifyTasks = (arrayTasksID) =>{
         const index = arrayTasks.findIndex(task => task.id === arrayTasksID)
         console.log(index)
         textbox.value = arrayTasks[index].task
@@ -113,18 +117,19 @@ let modifyTasks = (arrayTasksID) =>{
     }
 const acceptModifyTasks = (arrayTasksID) => {
         const index = arrayTasks.findIndex(task => task.id === arrayTasksID)
-        console.log("hola xd")
+        console.log("este es el index: "+index)
         arrayTasks[index].task = textbox.value 
         if(textbox.value === ''){
             alert("No ha ingresado ningun valor")
             return
         }
         let confirmModify = confirm("Estas seguro de que deseas MODIFICAR esta tarea?");
-        console.log("hi")
+        console.log("Estado: "+confirmModify)
         if(confirmModify){
         arrayTasks[index].task = textbox.value
         showTasks()
         btnModificarBlue.style.display = 'none'
+        btnAgregar.style.display = 'block'    
         return
         }    
     }
