@@ -24,7 +24,7 @@ const btnModificar = document.getElementById("modificar");
 const btnModificarBlue = document.getElementById("modifyBlue");
 
 
-const showTasks = () =>{
+
     let contadorTareas= 0;
     let contadorRealizadas= 0;
     let insertar = document.getElementById("insertar")
@@ -47,7 +47,7 @@ const showTasks = () =>{
     insertar.innerHTML = dataTareas;
     total.innerHTML = contadorTareas;
     realizadas.innerHTML = contadorRealizadas;
-}
+
 showTasks()
 
 
